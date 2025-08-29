@@ -1,7 +1,7 @@
 # 🧱 brickbot 🧱
 
 ## About
-Brickbot is a barebones python discord bot that can play Youtube videos using yt-dlp.
+Brickbot is a barebones python discord music bot that can play Youtube videos using yt-dlp/ffmpeg.
 
 ## Commands
 All commands are discord slash commands.
@@ -27,6 +27,12 @@ All commands are discord slash commands.
 ```/ping```
 - pong
 
+## Requirements
+
+- Developed and tested with Python `3.13.3`
+- All the pip packages in `requirements.txt`
+- [ffmpeg](https://ffmpeg.org/)
+
 ## Installation
 
 Clone the project, create a virtual environment and install the requirements in requirements.txt.
@@ -45,6 +51,7 @@ This is often because the installed version of yt-dlp got broken by some of YouT
 If it isn't a package issue, feel free to [make an issue](https://github.com/jsloan3/brickbot/issues) or [fix it yourself](https://github.com/jsloan3/brickbot/pulls).
 
 ## TODO:
+- Support for multiple guilds (currently only supports one at a time)
 - Youtube playlist support
 - Internet radio
 - Support for other sources (spotify playlist to youtube conversion)
