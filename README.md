@@ -15,6 +15,9 @@ All commands are discord slash commands.
 ```/leave```
 - makes the bot leave its current discord channel
 
+```/stop```
+- stops the currently playing music and clears the queue
+
 ```/queue```
 - displays the current music queue
 
@@ -30,8 +33,18 @@ Clone the project, create a virtual environment and install the requirements in 
 
 .env.example should be renamed to .env and filled with your bot token. You should be able to leave 'GUILD' empty, though commands might register quicker if you fill it with your Server ID.
 
+You'll also need a ```cookies.txt``` file placed into the project directory, otherwise YouTube will reject your requests. You can read yt-dlp's documentation on how to get this file [here](https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp).
+
 If you're on Linux and have tmux installed, you can use ```startup.sh``` to start an instance of the bot. You should probably start the bot on some sort of host like Google or Oracle cloud, both of which offer free tiers for hosting. The bot might have choppy playback if you host it from your own home internet.
+
+## It's broken!
+
+This is often because the installed version of yt-dlp got broken by some of YouTube's new changes. Most of the time it can be fixed by upgrading to the latest nightly release:
+```python3 -m pip install -U --pre "yt-dlp[default]"```
+
+If it isn't a package issue, feel free to [make an issue](https://github.com/jsloan3/brickbot/issues) or [fix it yourself](https://github.com/jsloan3/brickbot/pulls).
 
 ## TODO:
 - Youtube playlist support
-- 
+- Internet radio
+- Support for other sources (spotify playlist to youtube conversion)
