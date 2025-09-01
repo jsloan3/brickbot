@@ -176,3 +176,7 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# project specific
+update.log
+auto_update.sh

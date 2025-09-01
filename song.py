@@ -1,4 +1,5 @@
 from yt_dlp import YoutubeDL
+import asyncio
 from config import YDL_OPTS
 
 class Song:
@@ -7,15 +8,23 @@ class Song:
         self.source = None # youtube source url
         self.title = None # song title
         self.url = None # youtube url
-        self.process_term()
+        self.processing = True
     
-    def process_term(self):
+    async def process_term(self):
+        await asyncio.to_thread(self.process_term_async)
+
+    def process_term_async(self):
         with YoutubeDL(YDL_OPTS) as ydl:
             info = ydl.extract_info(f"ytsearch:{self.term}",
                 download=False)['entries'][0]
             self.source = info['url']
             self.title = info['title']
             self.url = info['original_url']
+        self.processing = False
+
+    def is_ready(self):
+        return not self.processing
+
 
     def get_url(self):
         return self.url

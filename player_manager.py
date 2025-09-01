@@ -3,6 +3,7 @@ import discord
 from discord import *
 import voice
 from config import FFMPEG_OPTS
+import asyncio
 
 class PlayerManager:
     def __init__(self, voice_client: voice.VoiceManager):
@@ -20,6 +21,7 @@ class PlayerManager:
             await interaction.response.send_message(f"searching for '{search}' . . .")
 
         new_song = Song(search)
+        await new_song.process_term()
         await text_channel.send(f"adding [{new_song.get_title()}](<{new_song.get_url()}>) to the queue")
         self.music_queue.append(new_song)
         if self.current_song == None:
